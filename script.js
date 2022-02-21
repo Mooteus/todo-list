@@ -39,8 +39,19 @@ function changeBackgroundColor(id) {
   idTask.style.backgroundColor = 'gray';
 }
 
+// rica a tarefa
+function completeTask(id) {
+  const idTask = document.getElementById(id);
+  idTask.classList.add('complete');
+}
+
 // recebe o clique na lista e recebe qual o id do item clicado
 const taskClick = document.getElementById('lista-tarefas');
+
 taskClick.addEventListener('click', (e) => {
   changeBackgroundColor(e.target.id);
+});
+
+taskClick.addEventListener('dblclick', (e) => {
+  completeTask(e.target.id);
 });
