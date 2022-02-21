@@ -23,8 +23,18 @@ function createTask() {
 const buttonTask = document.getElementById('criar-tarefa');
 buttonTask.addEventListener('click', createTask);
 
+function removeBackgroundColor() {
+  for (let i = 0; i < countTasks; i += 1) {
+    const taskColored = document.getElementById(`task${i}`);
+    if (taskColored.style.backgroundColor === 'gray') {
+      taskColored.style.backgroundColor = 'white';
+    }
+  }
+}
+
 // Muda a cor do fundo item da lista clicado
 function changeBackgroundColor(id) {
+  removeBackgroundColor();
   const idTask = document.getElementById(id);
   idTask.style.backgroundColor = 'gray';
 }
