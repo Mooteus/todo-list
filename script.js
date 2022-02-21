@@ -39,7 +39,7 @@ function changeBackgroundColor(id) {
   idTask.style.backgroundColor = 'gray';
 }
 
-// rica a tarefa
+// risca a tarefa
 function completeTask(id) {
   const idTask = document.getElementById(id);
   idTask.classList.add('complete');
