@@ -40,9 +40,13 @@ function changeBackgroundColor(id) {
 }
 
 // risca a tarefa
-function completeTask(id) {
+function taskChangeStatus(id) {
   const idTask = document.getElementById(id);
-  idTask.classList.add('completed');
+  if (!idTask.classList.contains('completed')) {
+    idTask.classList.add('completed');
+  } else {
+    idTask.classList.remove('completed');
+  }
 }
 
 // recebe o clique na lista e recebe qual o id do item clicado
@@ -53,5 +57,5 @@ taskClick.addEventListener('click', (e) => {
 });
 
 taskClick.addEventListener('dblclick', (e) => {
-  completeTask(e.target.id);
+  taskChangeStatus(e.target.id);
 });
