@@ -19,7 +19,7 @@ function createTask() {
     document.getElementById('texto-tarefa').value = '';
   }
 }
-// recebe o clique no botão e chama a função para criar tarefa
+// recebe o clique no botão #criar-tarefa e chama a função para criar tarefa
 const buttonTask = document.getElementById('criar-tarefa');
 buttonTask.addEventListener('click', createTask);
 
@@ -58,4 +58,19 @@ taskClick.addEventListener('click', (e) => {
 
 taskClick.addEventListener('dblclick', (e) => {
   taskChangeStatus(e.target.id);
+});
+
+// limpa lista de tarefas
+function clearTaskList() {
+  for (let i = 0; i < countTasks; i += 1) {
+    const lista = document.querySelector('.taskClass');
+    lista.parentNode.removeChild(lista);
+  }
+  countTasks = 0;
+}
+
+// recebe o clique do botão apagar-tarefa e retorna a function
+const clearClick = document.getElementById('apaga-tudo');
+clearClick.addEventListener('click', () => {
+  clearTaskList();
 });
