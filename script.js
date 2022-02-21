@@ -13,7 +13,12 @@ function createTask() {
   }
 }
 
+function changeBackgroundColor() {
+
+}
+
 const buttonTask = document.getElementById('criar-tarefa');
 buttonTask.addEventListener('click', createTask);
 
-const listClick = document.getElementsByClassName('');
+const listClick = document.getElementsByClassName('task');
+listClick.addEventListener('click', changeBackgroundColor);
