@@ -42,7 +42,7 @@ function changeBackgroundColor(id) {
 // risca a tarefa
 function completeTask(id) {
   const idTask = document.getElementById(id);
-  idTask.classList.add('complete');
+  idTask.classList.add('completed');
 }
 
 // recebe o clique na lista e recebe qual o id do item clicado
