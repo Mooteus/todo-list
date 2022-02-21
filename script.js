@@ -1,9 +1,12 @@
+// contador de tarefas adicionadas
 let countTasks = 0;
 
+// adiciona tarefa a lista
 function createTask() {
   const taskList = document.getElementById('lista-tarefas');
   const textTask = document.getElementById('texto-tarefa').value;
 
+  // verifica se o valor do texto do input não está vazio
   if (textTask.trim() !== '') {
     const task = document.createElement('li');
     task.setAttribute('id', `task${countTasks}`);
@@ -16,11 +19,18 @@ function createTask() {
     document.getElementById('texto-tarefa').value = '';
   }
 }
-
+// recebe o clique no botão e chama a função para criar tarefa
 const buttonTask = document.getElementById('criar-tarefa');
 buttonTask.addEventListener('click', createTask);
 
+// Muda a cor do fundo item da lista clicado
+function changeBackgroundColor(id) {
+  const idTask = document.getElementById(id);
+  idTask.style.backgroundColor = 'gray';
+}
+
+// recebe o clique na lista e recebe qual o id do item clicado
 const taskClick = document.getElementById('lista-tarefas');
 taskClick.addEventListener('click', (e) => {
-  alert(e.target.id);
+  changeBackgroundColor(e.target.id);
 });
