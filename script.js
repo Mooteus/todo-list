@@ -120,7 +120,7 @@ saveClick.addEventListener('click', () => {
   saveTasks();
 });
 
-// move o item da lista para cima ou para baixo
+// move o item da lista para cima
 function moveListUp() {
   const selectedTask = document.querySelector('.selected');
   const idSelectedTaskNum = selectedTask.id.split('-');
@@ -145,4 +145,31 @@ function moveListUp() {
 const moveUpClick = document.getElementById('mover-cima');
 moveUpClick.addEventListener('click', () => {
   moveListUp();
+});
+
+// move o item da lista para baixo
+function moveListDown() {
+  const selectedTask = document.querySelector('.selected');
+  const idSelectedTaskNum = selectedTask.id.split('-');
+  let numIdUpTask = parseInt(idSelectedTaskNum[1], 10) + 1;
+
+  while (!document.getElementById(`task-${numIdUpTask}`)) {
+    numIdUpTask += 1;
+    if (numIdUpTask > countTasks) {
+      break;
+    }
+  }
+  if (numIdUpTask <= countTasks) {
+    const upTask = document.getElementById(`task-${numIdUpTask}`).innerHTML;
+    const downTask = document.getElementById(selectedTask.id).innerHTML;
+    document.getElementById(`task-${numIdUpTask}`).innerHTML = downTask;
+    document.getElementById(selectedTask.id).innerHTML = upTask;
+    removeBackgroundColor();
+    changeBackgroundColor(`task-${numIdUpTask}`);
+  }
+}
+
+const moveDownClick = document.getElementById('mover-baixo');
+moveDownClick.addEventListener('click', () => {
+  moveListDown();
 });
