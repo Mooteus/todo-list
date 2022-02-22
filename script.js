@@ -1,5 +1,6 @@
 // contador de tarefas adicionadas
 let countTasks = 0;
+let countCompleteTasks = 0;
 
 // adiciona tarefa a lista
 function createTask() {
@@ -24,10 +25,10 @@ const buttonTask = document.getElementById('criar-tarefa');
 buttonTask.addEventListener('click', createTask);
 
 function removeBackgroundColor() {
-  for (let i = 0; i < countTasks; i += 1) {
-    const taskColored = document.getElementById(`task${i}`);
-    if (taskColored.style.backgroundColor === 'gray') {
-      taskColored.style.backgroundColor = 'white';
+  const taskList = document.getElementsByClassName('taskClass');
+  for (let i = 0; i < taskList.length; i += 1) {
+    if (taskList[i].style.backgroundColor === 'gray') {
+      taskList[i].style.backgroundColor = 'white';
     }
   }
 }
@@ -44,8 +45,10 @@ function taskChangeStatus(id) {
   const idTask = document.getElementById(id);
   if (!idTask.classList.contains('completed')) {
     idTask.classList.add('completed');
+    countCompleteTasks += 1;
   } else {
     idTask.classList.remove('completed');
+    countCompleteTasks -= 1;
   }
 }
 
@@ -67,10 +70,26 @@ function clearTaskList() {
     lista.parentNode.removeChild(lista);
   }
   countTasks = 0;
+  countCompleteTasks = 0;
 }
 
 // recebe o clique do botão apagar-tarefa e retorna a function
 const clearClick = document.getElementById('apaga-tudo');
 clearClick.addEventListener('click', () => {
   clearTaskList();
+});
+
+function clearTaskMarked() {
+  for (let i = 0; i < countCompleteTasks; i += 1) {
+    const completedTask = document.querySelector('.completed');
+    completedTask.parentNode.removeChild(completedTask);
+    countTasks -= 1;
+  }
+  countCompleteTasks = 0;
+}
+
+// recebe clique do botão remover-finalizados
+const clearMarked = document.getElementById('remover-finalizados');
+clearMarked.addEventListener('click', () => {
+  clearTaskMarked();
 });
