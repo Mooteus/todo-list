@@ -26,7 +26,7 @@ function createTask() {
   // verifica se o valor do texto do input não está vazio
   if (textTask.trim() !== '') {
     const task = document.createElement('li');
-    task.setAttribute('id', `task${countTasks}`);
+    task.setAttribute('id', `task-${countTasks}`);
     task.classList.add('taskClass');
     countTasks += 1;
 
@@ -108,7 +108,6 @@ clearMarked.addEventListener('click', () => {
   clearTaskMarked();
 });
 
-
 // salva lista de tarefas no localStorage
 function saveTasks() {
   localStorage.setItem('countTasks', countTasks);
@@ -123,6 +122,8 @@ saveClick.addEventListener('click', () => {
 
 // move o item da lista para cima ou para baixo
 function moveListUp() {
+  let selectedTask = document.querySelector('.selected');
+  
 
 }
 
