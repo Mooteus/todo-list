@@ -8,10 +8,10 @@ const localList = localStorage.getItem('lista');
 const listaTarefas = document.getElementById('lista-tarefas');
 
 if (localCountTasks !== null) {
-  countTasks = localCountTasks;
+  countTasks = parseInt(localCountTasks, 10);
 }
 if (localCountCompleteTasks !== null) {
-  countCompleteTasks = localCountCompleteTasks;
+  countCompleteTasks = parseInt(localCountCompleteTasks, 10);
 }
 
 if (localList !== null) {
@@ -120,3 +120,6 @@ const saveClick = document.getElementById('salvar-tarefas');
 saveClick.addEventListener('click', () => {
   saveTasks();
 });
+
+console.log(countTasks);
+console.log(countCompleteTasks);
