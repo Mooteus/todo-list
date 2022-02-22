@@ -43,8 +43,8 @@ buttonTask.addEventListener('click', createTask);
 function removeBackgroundColor() {
   const taskList = document.getElementsByClassName('taskClass');
   for (let i = 0; i < taskList.length; i += 1) {
-    if (taskList[i].style.backgroundColor === 'gray') {
-      taskList[i].style.backgroundColor = 'white';
+    if (taskList[i].classList.contains('selected')) {
+      taskList[i].classList.remove('selected');
     }
   }
 }
@@ -53,7 +53,7 @@ function removeBackgroundColor() {
 function changeBackgroundColor(id) {
   removeBackgroundColor();
   const idTask = document.getElementById(id);
-  idTask.style.backgroundColor = 'gray';
+  idTask.classList.add('selected');
 }
 
 // risca a tarefa
@@ -110,6 +110,8 @@ clearMarked.addEventListener('click', () => {
   clearTaskMarked();
 });
 
+
+// salva lista de tarefas no localStorage
 function saveTasks() {
   localStorage.setItem('countTasks', countTasks);
   localStorage.setItem('countCompleteTasks', countCompleteTasks);
@@ -121,3 +123,12 @@ saveClick.addEventListener('click', () => {
   saveTasks();
 });
 
+// move o item da lista para cima ou para baixo
+function moveListUp() {
+
+}
+
+const moveUpClick = document.getElementById('mover-cima');
+moveUpClick.addEventListener('click', () => {
+  moveListUp();
+});
