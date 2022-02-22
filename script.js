@@ -5,6 +5,7 @@ let countCompleteTasks = 0;
 const localCountTasks = localStorage.getItem('countTasks');
 const localCountCompleteTasks = localStorage.getItem('countCompleteTasks');
 const localList = localStorage.getItem('lista');
+const listaTarefas = document.getElementById('lista-tarefas');
 
 if (localCountTasks !== null) {
   countTasks = localCountTasks;
@@ -14,7 +15,7 @@ if (localCountCompleteTasks !== null) {
 }
 
 if (localList !== null) {
-  document.getElementById('lista-tarefas').innerHTML = localList;
+  listaTarefas.innerHTML = localList;
 }
 
 // adiciona tarefa a lista
@@ -68,7 +69,7 @@ function taskChangeStatus(id) {
 }
 
 // recebe o clique na lista e recebe qual o id do item clicado
-const taskClick = document.getElementById('lista-tarefas');
+const taskClick = listaTarefas;
 
 taskClick.addEventListener('click', (e) => {
   changeBackgroundColor(e.target.id);
@@ -112,7 +113,7 @@ clearMarked.addEventListener('click', () => {
 function saveTasks() {
   localStorage.setItem('countTasks', countTasks);
   localStorage.setItem('countCompleteTasks', countCompleteTasks);
-  localStorage.setItem('lista', document.getElementById('lista-tarefas').innerHTML);
+  localStorage.setItem('lista', listaTarefas.innerHTML);
 }
 
 const saveClick = document.getElementById('salvar-tarefas');
