@@ -121,5 +121,3 @@ saveClick.addEventListener('click', () => {
   saveTasks();
 });
 
-console.log(countTasks);
-console.log(countCompleteTasks);
