@@ -2,6 +2,21 @@
 let countTasks = 0;
 let countCompleteTasks = 0;
 
+const localCountTasks = localStorage.getItem('countTasks');
+const localCountCompleteTasks = localStorage.getItem('countCompleteTasks');
+const localList = localStorage.getItem('lista');
+
+if (localCountTasks !== null) {
+  countTasks = localCountTasks;
+}
+if (localCountCompleteTasks !== null) {
+  countCompleteTasks = localCountCompleteTasks;
+}
+
+if (localList !== null) {
+  document.getElementById('lista-tarefas').innerHTML = localList;
+}
+
 // adiciona tarefa a lista
 function createTask() {
   const taskList = document.getElementById('lista-tarefas');
@@ -92,4 +107,15 @@ function clearTaskMarked() {
 const clearMarked = document.getElementById('remover-finalizados');
 clearMarked.addEventListener('click', () => {
   clearTaskMarked();
+});
+
+function saveTasks() {
+  localStorage.setItem('countTasks', countTasks);
+  localStorage.setItem('countCompleteTasks', countCompleteTasks);
+  localStorage.setItem('lista', document.getElementById('lista-tarefas').innerHTML);
+}
+
+const saveClick = document.getElementById('salvar-tarefas');
+saveClick.addEventListener('click', () => {
+  saveTasks();
 });
