@@ -41,11 +41,9 @@ const buttonTask = document.getElementById('criar-tarefa');
 buttonTask.addEventListener('click', createTask);
 
 function removeBackgroundColor() {
-  const taskList = document.getElementsByClassName('taskClass');
-  for (let i = 0; i < taskList.length; i += 1) {
-    if (taskList[i].classList.contains('selected')) {
-      taskList[i].classList.remove('selected');
-    }
+  const taskList = document.querySelector('.selected');
+  if (taskList) {
+    taskList.classList.remove('selected');
   }
 }
 
