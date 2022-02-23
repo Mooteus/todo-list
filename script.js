@@ -177,3 +177,22 @@ moveDownClick.addEventListener('click', () => {
     moveListDown();
   }
 });
+
+// remove item selecioado
+function removeSelected() {
+  const selected = document.querySelector('.selected');
+  const taskSelected = document.getElementById(selected.id);
+
+  taskSelected.parentNode.removeChild(taskSelected);
+
+  if (taskSelected.classList.contains('completed')) {
+    countCompleteTasks -= 1;
+  }
+
+  countTasks -= 1;
+}
+
+const clickRemoveSelected = document.getElementById('remover-selecionado');
+clickRemoveSelected.addEventListener('click', () => {
+  removeSelected();
+});
