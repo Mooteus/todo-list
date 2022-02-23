@@ -144,7 +144,9 @@ function moveListUp() {
 
 const moveUpClick = document.getElementById('mover-cima');
 moveUpClick.addEventListener('click', () => {
-  moveListUp();
+  if (document.querySelector('.selected')) {
+    moveListUp();
+  }
 });
 
 // move o item da lista para baixo
@@ -171,5 +173,7 @@ function moveListDown() {
 
 const moveDownClick = document.getElementById('mover-baixo');
 moveDownClick.addEventListener('click', () => {
-  moveListDown();
+  if (document.querySelector('.selected')) {
+    moveListDown();
+  }
 });
